@@ -125,3 +125,8 @@ class LinkedList:
 
     def __len__(self):
         return self._size
+
+    def __getitem__(self, index):
+        if index < 0 or self._size <= index:
+            raise ValueError("invalid index")
+        return self._get_node_at(index).element
