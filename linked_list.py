@@ -130,3 +130,21 @@ class LinkedList:
         if index < 0 or self._size <= index:
             raise ValueError("invalid index")
         return self._get_node_at(index).element
+
+    def __setitem__(self, index, item):
+        if index < 0 or self._size <= index:
+            raise ValueError("invalid index")
+        self._get_node_at(index).element = item
+
+    def __iter__(self):
+        self._iterator = self._head
+        return self
+
+    def __next__(self):
+        if self._iterator is None:
+            raise StopIteration
+
+        value = self._iterator.element
+        self._iterator = self._iterator.next
+        return value
+
